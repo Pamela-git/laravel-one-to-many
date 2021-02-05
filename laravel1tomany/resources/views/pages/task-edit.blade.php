@@ -5,13 +5,13 @@
 
   <h1>Edit Task : {{ $task -> name}}</h1>
 
-  <form action="{{route('task-store')}}" method="POST">
+  <form action="{{route('task-update', $task -> id)}}" method="POST">
 
     @csrf
     @method('POST')
 
     <label for="name">title</label>
-    <input type="text" name="title" value="{{$task -> name}}">
+    <input type="text" name="title" value="{{$task -> title}}">
 
     <br>
     <br>
