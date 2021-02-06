@@ -32,6 +32,13 @@ class MainController extends Controller
     return view('pages.task-index', compact('tasks'));
   }
 
+  public function taskShow($id)
+  {
+    $task = Task::findOrFail($id);
+
+    return view('pages.task-show', compact('task'));
+  }
+
   public function taskCreate()
   {
 
