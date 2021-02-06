@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
 use App\Task;
+use App\Typology;
 
 class MainController extends Controller
 {
@@ -70,5 +71,21 @@ class MainController extends Controller
     $task -> update($request -> all());
 
     return redirect() -> route('task-index');
+  }
+
+
+  // Typologies
+
+  public function typIndex()
+  {
+    $typs = Typology::all();
+    return view('pages.typ-index', compact('typs'));
+  }
+
+  public function typShow($id)
+  {
+    $typ = Typology::findOrFail($id);
+
+    return view('pages.typ-show', compact('typ'));
   }
 }

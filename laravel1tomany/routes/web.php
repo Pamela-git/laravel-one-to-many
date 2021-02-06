@@ -18,3 +18,6 @@ Route::post('task-store', 'MainController@taskStore') -> name('task-store');
 
 Route::get('task-edit/{id}', 'MainController@taskEdit') -> name('task-edit');
 Route::post('/task-update/{id}', 'MainController@taskUpdate') -> name('task-update');
+
+Route::get('typ-index', 'MainController@typIndex') -> name('typ-index');
+Route::get('typ-show/{id}', 'MainController@typShow') -> name('typ-show');
