@@ -38,8 +38,15 @@
           {{$emp -> lastname}}
         </option>
       @endforeach
-
     </select>
+
+    <br>
+    <br>
+
+    <label for="typs[]">Typologies</label> <br>
+    @foreach ($typs as $typ)
+      <input type="checkbox" name="typs[]" value="{{$typ -> id}}"> {{$typ -> name}} <br>
+    @endforeach
 
     <input type="submit" name="" value="Aggiungi">
 

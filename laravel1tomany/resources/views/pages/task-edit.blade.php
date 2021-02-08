@@ -45,6 +45,23 @@
 
     </select>
 
+    <br>
+
+    {{-- @php
+      dd($task -> typologies);
+    @endphp --}}
+    <label for="typs[]">Typologies</label> <br>
+    @foreach ($typs as $typ)
+      <input type="checkbox" name="typs[]" value="{{$typ -> id}}"
+        @if ($task -> typologies -> contains($typ -> id) )
+          checked
+        @endif
+
+      >  {{$typ -> name}}
+
+      <br>
+    @endforeach
+
     <input type="submit" name="" value="Edit">
 
   </form>
