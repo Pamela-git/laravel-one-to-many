@@ -21,3 +21,9 @@ Route::post('/task-update/{id}', 'MainController@taskUpdate') -> name('task-upda
 
 Route::get('typ-index', 'MainController@typIndex') -> name('typ-index');
 Route::get('typ-show/{id}', 'MainController@typShow') -> name('typ-show');
+
+Route::get('typ-create', 'MainController@typCreate') -> name('typ-create');
+Route::post('typ-store', 'MainController@typStore') -> name('typ-store');
+
+Route::get('typ-edit/{id}', 'MainController@typEdit') -> name('typ-edit');
+Route::post('/typ-update/{id}', 'MainController@typUpdate') -> name('typ-update');
