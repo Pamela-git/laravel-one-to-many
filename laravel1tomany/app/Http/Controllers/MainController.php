@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 use App\Employee;
 use App\Task;
 use App\Typology;
@@ -54,6 +56,12 @@ class MainController extends Controller
   {
     $data = $request -> all();
 
+    Validator::make($data, [
+            'title' => 'required|min:5|max:15|alpha',
+            'description' => 'required|min:15|max:200|string',
+            'priority' => 'required|integer|between:1,5',
+        ]) -> validate();
+
     // dd($data);
     $newTask = Task::make($data);
     $emp = Employee::findOrFail($data['employee_id']);
@@ -78,6 +86,12 @@ class MainController extends Controller
   public function taskUpdate(Request $request, $id)
   {
     $data = $request -> all();
+    Validator::make($data, [
+            'title' => 'required|min:5|max:15|alpha',
+            'description' => 'required|min:15|max:200|string',
+            'priority' => 'required|integer|between:1,5',
+        ]) -> validate();
+
     $emp = Employee::findOrFail($data['employee_id']);
     $task = Task::findOrFail($id);
     $task -> update($data);
@@ -118,6 +132,10 @@ class MainController extends Controller
   public function typStore(Request $request)
   {
     $data = $request -> all();
+    Validator::make($data, [
+            'name' => 'required|min:5|max:10|alpha_num',
+            'description' => 'required|min:5|max:250',
+        ]) -> validate();
 
     // dd($data);
     $newTyp = Typology::make($data);
